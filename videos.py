@@ -7,8 +7,8 @@ def get_video_data():
      each item in the list is a dictionary of a specific videos and their attributes."""
 
     vid_data = []
-    with open('USvideos.csv', newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    with open('/Users/tkhodr/Documents/GitHub/homework-6-TalalK/USvideos.csv', newline='') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         for row in spamreader:
             if len(row) == 16:
                 vid_dict = {'video_id': row[0],
@@ -39,8 +39,10 @@ def print_data(data):
 
 def get_most_popular_and_least_popular_channel(data):
     """ fill in the Nones for the dictionary below using the vid data """
-    most_popular_and_least_popular_channel = {'most_popular_channel': None, 'least_popular_channel': None, 'most_pop_num_views': None,
-                                              'least_pop_num_views': None}
+    most_popular_and_least_popular_channel = {'most_popular_channel': max('views'), 
+                                              'least_popular_channel': min('views'), 
+                                              'most_pop_num_views': sum('most_popular_channel'),
+                                              'least_pop_num_views': sum('least_popular_channel')}
 
     return most_popular_and_least_popular_channel
 
@@ -48,7 +50,10 @@ def get_most_popular_and_least_popular_channel(data):
 def get_most_liked_and_disliked_channel(data):
     """ fill in the Nones for the dictionary below using the bar party data """
 
-    most_liked_and_disliked_channel = {'most_liked_channel': None, 'num_likes': None, 'most_disliked_channel': None, 'num_dislikes': None}
+    most_liked_and_disliked_channel = {'most_liked_channel': sum('likes'), 
+                                       'num_likes': sum('most_liked_channel'), 
+                                       'most_disliked_channel': min('likes'), 
+                                       'num_dislikes': sum('most_disliked_channel')}
 
     return most_liked_and_disliked_channel
 
